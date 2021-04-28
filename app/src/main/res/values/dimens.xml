@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_textView_genre">10dp</dimen>
+    <dimen name="textSize_genre">20sp</dimen>
+    <dimen name="margin_movies">8dp</dimen>
+    <dimen name="margin_layout_movies">5dp</dimen>
+    <dimen name="image_width">85dp</dimen>
+    <dimen name="image_height">120dp</dimen>
+</resources>

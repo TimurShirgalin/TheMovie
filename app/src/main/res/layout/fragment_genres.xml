@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/customBackgroundColor"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_genre"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/textSize_genre"
+            android:textColor="?attr/textViewColor"
+            android:layout_marginStart="@dimen/margin_textView_genre"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_movieData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -12,6 +12,15 @@ import com.example.themovie.model.MovieData
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var movieData: List<MovieData> = listOf()
+    private lateinit var itemClickListener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(view: View?, position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: OnItemClickListener) {
+        itemClickListener = clickListener
+    }
 
     fun setMovieData(data: List<MovieData>) {
         movieData = data
@@ -26,7 +35,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(movieData[position])
+        holder.bind(movieData[position], itemClickListener)
 
     override fun getItemCount() = movieData.size
 
@@ -34,9 +43,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         private var movie: TextView = itemView.findViewById(R.id.textView_movieTitle)
         private var image: AppCompatImageView = itemView.findViewById(R.id.imageView)
 
-        fun bind(movieData: MovieData) {
+        fun bind(movieData: MovieData, listener: OnItemClickListener) {
             movie.text = movieData.movieName
             image.setImageResource(movieData.image)
+
+            itemView.setOnClickListener {
+                listener.onItemClick(itemView, adapterPosition)
+            }
         }
     }
 }

@@ -1,15 +1,20 @@
 package com.example.themovie.ui.main
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovie.R
+import com.example.themovie.databinding.FragmentBottomSheetBinding
 import com.example.themovie.model.GenresData
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class GenresAdapter : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
+class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 
     private var genresData: List<GenresData> = listOf()
 
@@ -47,6 +52,19 @@ class GenresAdapter : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
             movieDataRecycler.layoutManager = movieDataLayoutManager
             movieDataRecycler.adapter = movieDataAdapter
             movieDataAdapter.setMovieData(moviesData.movieData)
+
+            movieDataAdapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
+                override fun onItemClick(view: View?, position: Int) {
+                    if (manager != null) {
+                        val bundle = Bundle()
+                        bundle.putParcelable(MovieDetails.KEY, moviesData.movieData[position])
+                        manager.beginTransaction()
+                            .add(R.id.container, MovieDetails.newInstance(bundle))
+                            .addToBackStack(null)
+                            .commit()
+                    }
+                }
+            })
         }
     }
 }

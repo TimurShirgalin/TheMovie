@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.themovie.R
-import com.example.themovie.model.MovieData
+import com.example.themovie.model.Movies
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-    private var movieData: List<MovieData> = listOf()
+    private var movieData: List<Movies> = listOf()
     private lateinit var itemClickListener: OnItemClickListener
 
     interface OnItemClickListener {
@@ -22,7 +23,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         itemClickListener = clickListener
     }
 
-    fun setMovieData(data: List<MovieData>) {
+    fun setMovieData(data: List<Movies>) {
         movieData = data
         notifyDataSetChanged()
     }
@@ -43,9 +44,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         private var movie: TextView = itemView.findViewById(R.id.textView_movieTitle)
         private var image: AppCompatImageView = itemView.findViewById(R.id.imageView)
 
-        fun bind(movieData: MovieData, listener: OnItemClickListener) {
-            movie.text = movieData.movieName
-            image.setImageResource(movieData.image)
+        fun bind(movieData: Movies, listener: OnItemClickListener) {
+            movie.text = movieData.title
+            Glide.with(itemView)
+                .asBitmap()
+                .load("https://image.tmdb.org/t/p/w185_and_h278_bestv2${movieData.poster_path}")
+                .into(image)
 
             itemView.setOnClickListener {
                 listener.onItemClick(itemView, adapterPosition)

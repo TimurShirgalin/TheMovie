@@ -5,20 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovie.R
-import com.example.themovie.databinding.FragmentBottomSheetBinding
-import com.example.themovie.model.GenresData
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.example.themovie.model.Categories
 
 class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 
-    private var genresData: List<GenresData> = listOf()
+    private var genresData: List<Categories> = listOf()
 
-    fun setGenresData(data: List<GenresData>) {
+    fun setGenresData(data: List<Categories>) {
         genresData = data
         notifyDataSetChanged()
     }
@@ -38,12 +35,12 @@ class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapte
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var genreTextView: TextView = itemView.findViewById(R.id.textView_genre)
 
-        fun bind(genreData: GenresData) {
-            genreTextView.text = genreData.genres
+        fun bind(genreData: Categories) {
+            genreTextView.text = genreData.categoryName
             setMovieDataRecycler(genreData)
         }
 
-        private fun setMovieDataRecycler(moviesData: GenresData) {
+        private fun setMovieDataRecycler(moviesData: Categories) {
             val movieDataRecycler: RecyclerView = itemView.findViewById(R.id.recycler_movieData)
             val movieDataLayoutManager =
                 LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
@@ -51,13 +48,13 @@ class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapte
 
             movieDataRecycler.layoutManager = movieDataLayoutManager
             movieDataRecycler.adapter = movieDataAdapter
-            movieDataAdapter.setMovieData(moviesData.movieData)
+            movieDataAdapter.setMovieData(moviesData.movieList)
 
             movieDataAdapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
                 override fun onItemClick(view: View?, position: Int) {
                     if (manager != null) {
                         val bundle = Bundle()
-                        bundle.putParcelable(MovieDetails.KEY, moviesData.movieData[position])
+                        bundle.putParcelable(MovieDetails.KEY, moviesData.movieList[position])
                         manager.beginTransaction()
                             .add(R.id.container, MovieDetails.newInstance(bundle))
                             .addToBackStack(null)

@@ -15,7 +15,7 @@ import java.util.*
 import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 
-private const val YOUR_API_KEY = "751f0ad3d019a2d30a59aa7c461351dc"
+const val YOUR_API_KEY = "751f0ad3d019a2d30a59aa7c461351dc"
 
 private const val numberOfLoadPages: Int = 2
 private const val genresURL: String =

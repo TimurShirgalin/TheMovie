@@ -47,3 +47,12 @@ data class Movies(
     val vote_average: Number?,
     val genre_ids: List<Int>?,
 ) : Parcelable
+
+@Parcelize
+data class MoviesWithoutGenres(
+    val id: Int?,
+    val title: String?,
+    val overview: String?,
+    val poster_path: String?,
+    val vote_average: Number?
+) : Parcelable

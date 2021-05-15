@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovie.R
 import com.example.themovie.model.Categories
+import com.example.themovie.ui.details.MovieAdapter
+import com.example.themovie.ui.details.MovieDetails
 
 class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 

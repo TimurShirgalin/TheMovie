@@ -1,4 +1,4 @@
-package com.example.themovie.ui.main
+package com.example.themovie.ui.details
 
 import android.view.LayoutInflater
 import android.view.View
@@ -29,10 +29,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v: View = LayoutInflater.from(parent.context).inflate(
+        val view: View = LayoutInflater.from(parent.context).inflate(
             R.layout.fragment_movies, parent, false
         )
-        return ViewHolder(v)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =

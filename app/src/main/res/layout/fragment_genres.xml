@@ -12,10 +12,10 @@
         <TextView
             android:id="@+id/textView_genre"
             android:layout_width="match_parent"
-            android:textSize="@dimen/textSize_genre"
-            android:textColor="?attr/textViewColor"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_textView_genre"
-            android:layout_height="wrap_content" />
+            android:textColor="?attr/textViewColor"
+            android:textSize="@dimen/textSize_genre" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movieData"

@@ -41,9 +41,12 @@ class MovieDetails : Fragment() {
                         .load("https://image.tmdb.org/t/p/w185_and_h278_bestv2${movieData!!.poster_path}")
                         .into(binding.detailsImage)
                     binding.apply {
-                        detailsTitle.text = resources.getString(R.string.moveTitle) + movieData!!.title
-                        detailsCategory.text = resources.getString(R.string.description) + movieData!!.overview
-                        detailsDescription.text = resources.getString(R.string.average) + movieData!!.vote_average.toString()
+                        detailsTitle.text =
+                            resources.getString(R.string.moveTitle) + movieData!!.title
+                        detailsCategory.text =
+                            resources.getString(R.string.description) + movieData!!.overview
+                        detailsDescription.text =
+                            resources.getString(R.string.average) + movieData!!.vote_average.toString()
                     }
                 }
             }
@@ -90,7 +93,6 @@ class MovieDetails : Fragment() {
 
     override fun onDestroyView() {
         _binding = null
-        activity?.supportFragmentManager?.popBackStack()
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         context?.let {
             LocalBroadcastManager.getInstance(it).unregisterReceiver(dataReceiver)

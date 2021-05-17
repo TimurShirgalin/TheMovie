@@ -13,7 +13,8 @@ import com.example.themovie.model.Categories
 import com.example.themovie.ui.details.MovieAdapter
 import com.example.themovie.ui.details.MovieDetails
 
-class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
+class GenresAdapter(private val manager: FragmentManager?) :
+    RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 
     private var genresData: List<Categories> = listOf()
 
@@ -58,7 +59,7 @@ class GenresAdapter(private val manager: FragmentManager?) : RecyclerView.Adapte
                         val bundle = Bundle()
                         bundle.putParcelable(MovieDetails.KEY, moviesData.movieList[position])
                         manager.beginTransaction()
-                            .add(R.id.container, MovieDetails.newInstance(bundle))
+                            .add(R.id.main, MovieDetails.newInstance(bundle))
                             .addToBackStack(null)
                             .commit()
                     }

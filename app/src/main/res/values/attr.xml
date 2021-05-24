@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="textViewColor" format="reference" />
+    <attr name="textColorPrimary" format="reference" />
     <attr name="customBackgroundColor" format="reference" />
     <attr name="dialogBackground" format="reference" />
+    <attr name="menuIconTint" format="reference" />
 </resources>

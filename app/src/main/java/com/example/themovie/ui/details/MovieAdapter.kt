@@ -51,9 +51,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
                 .load("https://image.tmdb.org/t/p/w185_and_h278_bestv2${movieData.poster_path}")
                 .into(image)
 
-            itemView.setOnClickListener {
-                listener.onItemClick(itemView, adapterPosition)
-            }
+            itemView.setOnClickListener { listener.onItemClick(itemView, adapterPosition) }
         }
     }
 }

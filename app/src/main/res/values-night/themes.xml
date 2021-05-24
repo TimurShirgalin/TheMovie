@@ -2,19 +2,20 @@
     <!-- Base application theme. -->
     <style name="TheMovie" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/gray_shady</item>
+        <item name="colorPrimaryVariant">@color/gray_shady_dark</item>
+        <item name="colorOnPrimary">@color/gray_shady_light</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue_dark</item>
+        <item name="colorOnSecondary">@color/blue_light</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="textViewColor">@color/white</item>
+        <item name="textColorPrimary">@color/white</item>
         <item name="customBackgroundColor">@color/black</item>
-        <item name="dialogBackground">@color/background_light</item>
+        <item name="dialogBackground">@color/gray_shady_light</item>
+        <item name="menuIconTint">@color/white</item>
     </style>
 
     <style name="TheMovie.NoActionBar">
@@ -23,11 +24,11 @@
     </style>
 
     <style name="TheMovie.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:background">@color/blue</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="popupMenuBackground">@color/white</item>
+        <item name="popupMenuBackground">@color/gray_shady_light</item>
+        <item name="android:textColor">@color/white</item>
         <item name="title">Movies</item>
     </style>
 
-    <style name="TheMovie.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
+    <style name="TheMovie.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

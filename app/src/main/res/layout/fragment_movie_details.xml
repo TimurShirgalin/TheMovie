@@ -1,35 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorOnPrimary"
-    android:orientation="vertical">
+    android:padding="5dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/details_image"
-        android:layout_width="170dp"
-        android:layout_height="240dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/details_title"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/details_image"
+            android:layout_width="170dp"
+            android:layout_height="240dp"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            style="@style/titleTextView"
+            android:text="@string/title_movie" />
+
+        <TextView
+            android:id="@+id/details_title"
+            style="@style/descriptionMovieTextView"
+            tools:text="Movie title" />
+
+        <TextView
+            style="@style/titleTextView"
+            android:text="@string/title_average" />
+
+        <TextView
+            android:id="@+id/details_average"
+            style="@style/descriptionMovieTextView"
+            tools:text="Movie description" />
+
+        <TextView
+            style="@style/titleTextView"
+            android:text="@string/title_description" />
+
+        <TextView
+            android:id="@+id/details_description"
+            style="@style/descriptionMovieTextView"
+            tools:text="Movie category" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        tools:text="Movie title" />
+        android:id="@+id/fab_like"
+        android:src="@drawable/ic_like_false"
+        android:backgroundTint="@color/grey_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:id="@+id/details_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        tools:text="Movie category" />
-
-    <TextView
-        android:id="@+id/details_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        tools:text="Movie description" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

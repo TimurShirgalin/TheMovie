@@ -19,6 +19,9 @@
         <TextView
             android:id="@+id/textView_movieTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/textView_movie_recycler_margin"
+            android:singleLine="true"
+            android:textColor="?attr/textColorPrimary" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

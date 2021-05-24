@@ -54,5 +54,12 @@ data class MoviesWithoutGenres(
     val title: String?,
     val overview: String?,
     val poster_path: String?,
-    val vote_average: Number?
+    val vote_average: Number?,
+    val like: Boolean = false
+) : Parcelable
+
+@Parcelize
+data class NotesData(
+    val id: Int?,
+    val note: String?
 ) : Parcelable

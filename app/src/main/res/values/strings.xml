@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">TheMovie</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_title_settings">Settings</string>
+    <string name="title_movie">Название:</string>
+    <string name="title_average">Рейтинг:</string>
+    <string name="title_description">Описание:</string>
+    <string name="menu_title_note">Note</string>
+    <string name="menu_title_average">Фильмы с рейтингом 8 и выше</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="moveTitle">Название:\n</string>
-    <string name="description">Описание:\n</string>
-    <string name="average">Рейтинг:\n</string>
+    <string name="note_label">Заметка</string>
+    <string name="note_button_text_cancel">Отмена</string>
+    <string name="note_button_text_save">Сохранить</string>
+    <string name="favorite">Favorite</string>
 </resources>

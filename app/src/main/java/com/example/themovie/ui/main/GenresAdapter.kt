@@ -1,26 +1,29 @@
 package com.example.themovie.ui.main
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovie.R
 import com.example.themovie.model.Categories
-import com.example.themovie.ui.details.MovieAdapter
-import com.example.themovie.ui.details.MovieDetails
 
-class GenresAdapter(private val manager: FragmentManager?) :
-    RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
+class GenresAdapter : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 
     private var genresData: List<Categories> = listOf()
+    private lateinit var setMovieAdapter: OnSetMovieAdapter
 
     fun setGenresData(data: List<Categories>) {
         genresData = data
         notifyDataSetChanged()
+    }
+
+    interface OnSetMovieAdapter {
+        fun setMovieAdapter(itemView: View, moviesData: Categories)
+    }
+
+    fun setOnMovieAdapter(onSetMovieAdapter: OnSetMovieAdapter) {
+        setMovieAdapter = onSetMovieAdapter
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -31,40 +34,16 @@ class GenresAdapter(private val manager: FragmentManager?) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) =
-        viewHolder.bind(genresData[position])
+        viewHolder.bind(genresData[position], setMovieAdapter)
 
     override fun getItemCount() = genresData.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var genreTextView: TextView = itemView.findViewById(R.id.textView_genre)
 
-        fun bind(genreData: Categories) {
+        fun bind(genreData: Categories, setMovieAdapter: OnSetMovieAdapter) {
+            setMovieAdapter.setMovieAdapter(itemView, genreData)
             genreTextView.text = genreData.categoryName
-            setMovieDataRecycler(genreData)
-        }
-
-        private fun setMovieDataRecycler(moviesData: Categories) {
-            val movieDataRecycler: RecyclerView = itemView.findViewById(R.id.recycler_movieData)
-            val movieDataLayoutManager =
-                LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-            val movieDataAdapter = MovieAdapter()
-
-            movieDataRecycler.layoutManager = movieDataLayoutManager
-            movieDataRecycler.adapter = movieDataAdapter
-            movieDataAdapter.setMovieData(moviesData.movieList)
-
-            movieDataAdapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
-                override fun onItemClick(view: View?, position: Int) {
-                    if (manager != null) {
-                        val bundle = Bundle()
-                        bundle.putParcelable(MovieDetails.KEY, moviesData.movieList[position])
-                        manager.beginTransaction()
-                            .add(R.id.main, MovieDetails.newInstance(bundle))
-                            .addToBackStack(null)
-                            .commit()
-                    }
-                }
-            })
         }
     }
 }

@@ -2,8 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/app_bar_notes"
+        android:icon="@drawable/ic_notes"
+        android:title="@string/menu_title_note"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/app_bar_settings"
         android:icon="@drawable/ic_settings"
-        android:title="settings"
-        app:showAsAction="ifRoom" />
+        android:title="@string/menu_title_settings"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/average"
+        android:checkable="true"
+        android:title="@string/menu_title_average"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_favorite"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favorite"
+        app:showAsAction="ifRoom"/>
 </menu>

@@ -6,4 +6,6 @@
     <dimen name="margin_layout_movies">5dp</dimen>
     <dimen name="image_width">85dp</dimen>
     <dimen name="image_height">120dp</dimen>
+    <dimen name="textView_movie_recycler_margin">2dp</dimen>
+    <dimen name="note_text_size">18sp</dimen>
 </resources>

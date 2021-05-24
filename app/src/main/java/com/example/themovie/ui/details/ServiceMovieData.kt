@@ -49,7 +49,6 @@ class ServiceMovieData : JobIntentService() {
         } catch (e: MalformedURLException) {
             Log.e("", "Fail URI", e)
             e.printStackTrace()
-            //Обработка ошибки
         }
     }
 

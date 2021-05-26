@@ -5,19 +5,19 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GenresData(
-    val genres: List<Genres>
+    val genres: List<Genres>,
 ) : Parcelable
 
 data class MovieDataLocal(
     val movieName: String,
     val genre: String,
     val description: String,
-    val image: Int
+    val image: Int,
 )
 
 data class GenresDataLocal(
     val id: String,
-    val name: List<MovieDataLocal>
+    val name: List<MovieDataLocal>,
 )
 
 @Parcelize
@@ -55,11 +55,16 @@ data class MoviesWithoutGenres(
     val overview: String?,
     val poster_path: String?,
     val vote_average: Number?,
-    val like: Boolean = false
+    val like: Boolean = false,
 ) : Parcelable
 
 @Parcelize
 data class NotesData(
     val id: Int?,
-    val note: String?
+    val note: String?,
 ) : Parcelable
+
+data class Contact(
+    val name: String?,
+    val phoneNumber: MutableList<String?>,
+)

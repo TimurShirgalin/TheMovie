@@ -16,6 +16,7 @@ import com.example.themovie.util.SharedPref
 const val PAGE_MAIN = 0
 const val PAGE_DETAILS = 1
 const val PAGE_FAVORITE = 2
+const val PAGE_CONTACTS = 3
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,16 +88,25 @@ class MainActivity : AppCompatActivity() {
                     findItem(R.id.app_bar_notes).isVisible = false
                     findItem(R.id.average).isVisible = true
                     findItem(R.id.menu_favorite).isVisible = true
+                    findItem(R.id.menu_contacts).isVisible = true
                 }
                 PAGE_FAVORITE -> {
                     findItem(R.id.app_bar_notes).isVisible = false
                     findItem(R.id.average).isVisible = false
                     findItem(R.id.menu_favorite).isVisible = false
+                    findItem(R.id.menu_contacts).isVisible = false
                 }
                 PAGE_DETAILS -> {
                     findItem(R.id.app_bar_notes).isVisible = true
                     findItem(R.id.average).isVisible = false
                     findItem(R.id.menu_favorite).isVisible = false
+                    findItem(R.id.menu_contacts).isVisible = false
+                }
+                PAGE_CONTACTS -> {
+                    findItem(R.id.app_bar_notes).isVisible = false
+                    findItem(R.id.average).isVisible = false
+                    findItem(R.id.menu_favorite).isVisible = false
+                    findItem(R.id.menu_contacts).isVisible = false
                 }
             }
         }

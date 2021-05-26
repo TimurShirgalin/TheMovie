@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -22,12 +21,11 @@ import com.example.themovie.R
 import com.example.themovie.databinding.MainFragmentBinding
 import com.example.themovie.model.AppStateMovies
 import com.example.themovie.model.Categories
+import com.example.themovie.ui.contacts.ContactsFragment
 import com.example.themovie.ui.details.MovieAdapter
 import com.example.themovie.ui.details.MovieDetails
 import com.example.themovie.ui.favorite.FavoriteFragment
 import com.example.themovie.util.IS_CHECKED
-import com.example.themovie.util.IS_MAIN
-import com.example.themovie.util.NOTE_ICON
 import com.example.themovie.util.SharedPref
 import com.example.themovie.viewModel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -38,7 +36,6 @@ class MainFragment : Fragment() {
     private val connection = Connect { Toast.makeText(context, "$it", Toast.LENGTH_LONG).show() }
     private lateinit var sharedPref: SharedPref
     private val adapter = GenresAdapter()
-    private var countFavoritesInDB: Int? = null
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
@@ -104,7 +101,9 @@ class MainFragment : Fragment() {
                     .setAction("Reload") { viewModel.getMoviesData(averageBasic) }
                     .show()
             }
-            is AppStateMovies.Loading -> { loadingLayout.visibility = View.VISIBLE }
+            is AppStateMovies.Loading -> {
+                loadingLayout.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -160,6 +159,15 @@ class MainFragment : Fragment() {
                 activity?.apply {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main, FavoriteFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit()
+                }
+            }
+            R.id.menu_contacts -> {
+                sharedPref.pagePreferences = PAGE_CONTACTS
+                activity?.apply {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main, ContactsFragment.newInstance())
                         .addToBackStack(null)
                         .commit()
                 }

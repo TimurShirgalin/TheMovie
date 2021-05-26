@@ -37,10 +37,8 @@ class MovieCardSourceImpl : MovieCardSource {
         convertEntityToMovie(MoviesDatabase.database.moviesDAO().getMovieData(movieId))
 
     override fun getNote(movieId: Int?): NotesData =
-        NotesDatabase.database.notesDAO().getNote(movieId).let {
-            if (it != null) NotesData(it.movieId, it.note)
-            else NotesData(movieId, basicNote)
-        }
+        NotesDatabase.database.notesDAO().getNote(movieId)?.let { NotesData(it.movieId, it.note) }
+            ?: NotesData(movieId, basicNote)
 
     override fun deleteNote(movieId: Int?) = NotesDatabase.database.notesDAO().deleteNote(movieId)
 
@@ -48,20 +46,16 @@ class MovieCardSourceImpl : MovieCardSource {
         NotesDatabase.database.notesDAO().addNote(NotesEntity(note.id, note.note))
 
     private fun convertEntityToMovie(entity: MoviesEntity?): MoviesWithoutGenres =
-        entity.let {
-            if (it != null) {
-                MoviesWithoutGenres(
-                    it.movieId,
-                    it.title,
-                    it.overview,
-                    it.poster_path,
-                    it.vote_average,
-                    it.like
-                )
-            } else {
-                MoviesWithoutGenres(0, null, null, null, null, false)
-            }
-        }
+        entity?.let {
+            MoviesWithoutGenres(
+                it.movieId,
+                it.title,
+                it.overview,
+                it.poster_path,
+                it.vote_average,
+                it.like
+            )
+        } ?: MoviesWithoutGenres(0, null, null, null, null, false)
 
     private fun convertListEntityToListMovies(entityList: List<MoviesEntity>): List<MoviesWithoutGenres> =
         entityList.map {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/contacts_layout_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_layout_movies">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/contact_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_contact_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/contact_number_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/contact_image"
+            app:layout_constraintStart_toEndOf="@id/contact_image"
+            app:layout_constraintTop_toTopOf="@id/contact_image">
+
+            <TextView
+                android:id="@+id/contact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/textView_movie_recycler_margin"
+                android:singleLine="true"
+                android:textColor="?attr/textColorPrimary"
+                android:textSize="@dimen/contact_text_size"
+                android:textStyle="bold"
+                tools:text="Hallo" />
+
+            <TextView
+                android:id="@+id/contact_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/textView_movie_recycler_margin"
+                android:alpha="0.8"
+                android:singleLine="true"
+                android:textColor="?attr/textColorPrimary"
+                android:textSize="@dimen/contact_number_text_size"
+                tools:text="Number" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

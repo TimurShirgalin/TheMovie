@@ -14,4 +14,13 @@
         <item name="android:textStyle">normal</item>
         <item name="android:layout_marginTop">0dp</item>
     </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="counterMaxLength">20</item>
+        <item name="android:hint">"Поиск"</item>
+        <item name="endIconMode">custom</item>
+        <item name="startIconDrawable">@drawable/ic_search</item>
+    </style>
 </resources>

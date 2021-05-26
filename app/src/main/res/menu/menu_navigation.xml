@@ -21,5 +21,11 @@
         android:id="@+id/menu_favorite"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favorite"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_contacts"
+        android:icon="@drawable/ic_contacts"
+        android:title="@string/contacts"
+        app:showAsAction="ifRoom" />
 </menu>

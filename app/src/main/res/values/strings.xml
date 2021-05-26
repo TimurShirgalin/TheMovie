@@ -13,4 +13,5 @@
     <string name="note_button_text_cancel">Отмена</string>
     <string name="note_button_text_save">Сохранить</string>
     <string name="favorite">Favorite</string>
+    <string name="contacts">Контакты</string>
 </resources>
